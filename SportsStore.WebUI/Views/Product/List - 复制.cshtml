@@ -1,4 +1,4 @@
-﻿@model SportsStore.WebUI.Models.ProductsListViewModel
+﻿@model IEnumerable<SportsStore.Domain.Entities.Product>
 @using SportsStore.WebUI.HtmlHelpers
 
 @{
@@ -10,21 +10,21 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Name)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Description)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Price)
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Category)
+            @Html.DisplayNameFor(model => model.Category)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model.Products) {
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -42,4 +42,3 @@
 }
 
 </table>
-<div class="btn-link">@Html.PageLinks(Model.PagingInfo,x=>Url.Action("List", new { Page = x }))</div>
